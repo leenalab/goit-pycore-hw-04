@@ -1,9 +1,31 @@
 from pathlib import Path
 
-# Створення об'єкту Path для файлу
-file_path = Path("list_of_developers.txt")
+def total_salary(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        total = 0 # змінна для підсумкової суми зарплат.
+        persons = 0 # змінна для підрахунку кількості працівників
 
-# Читання тексту з файлу
-text = file_path.read_text(encoding="utf-8")
-print(text)
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue # пропускаємо порожні рядки
+               
+            try:
+                name, salary = line.split(",")
+                total += float(salary)
+                persons += 1
+            except ValueError:
+                print(f"Рядок має неправильний формат та буде пропущений: {line}")
+    
+        if persons == 0:
+            return (0, 0)
+    
+        average = total / persons
+        return (total, average)
 
+    except FileNotFoundError: # Ловимо помилку, якщо файл не знайдено.
+    
+        print("Файл не знайдено.")
+        return (0, 0)
