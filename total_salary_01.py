@@ -29,3 +29,8 @@ def total_salary(path):
     
         print("Файл не знайдено.")
         return (0, 0)
+    
+total, average = total_salary("list_of_developers.txt")
+
+print(f"Загальна сума заробітної плати: {round(total)}")
+print(f"Середня заробітна плата: {round(average)}") # округлюємо середню зарплату до цілого числа.
