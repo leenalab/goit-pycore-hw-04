@@ -1,7 +1,9 @@
-# Спочатку додаємо новий рядок
-with open("list_of_developers.txt", "a") as f:
-    f.write("\nSerj Griznov,2500\n")
+from pathlib import Path
 
-# Потім читаємо увесь файл
-with open("list_of_developers.txt", "r") as f:
-    print(f.read())
+# Створення об'єкту Path для файлу
+file_path = Path("list_of_developers.txt")
+
+# Читання тексту з файлу
+text = file_path.read_text(encoding="utf-8")
+print(text)
+
