@@ -8,3 +8,41 @@ from pathlib import Path
 # Опрацювати мождивы помилки та винятки
 
 def get_cats_info(path):
+    cats_list = []
+
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue # пропускаємо порожні рядки, (кота не знайдено)
+
+            try:
+                cat_id, name, age = line.split(",")  # розділили id, ім’я та вік кота
+                cats_list.append({
+                    "id": cat_id.strip(),
+                    "name": name.strip(),
+                    "age": age.strip()
+                })
+            except ValueError:
+                print(f"Рядок має неправильний формат, його буде пропущено: {line}")
+        return cats_list
+    
+    except FileNotFoundError:
+        print("Файл не знайдено.")
+        return []
+cats_info = get_cats_info("cats_info.txt")
+
+cats_info = get_cats_info("cats_info.txt")
+for cat in cats_info: # виводимо кожний словник з нового рядка
+    print(cat)
+
+        
+
+
+    
+
+        
+    

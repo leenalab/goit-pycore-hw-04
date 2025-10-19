@@ -13,7 +13,7 @@ def total_salary(path):
                 continue # пропускаємо порожні рядки
                
             try:
-                name, salary = line.split(",")
+                name, salary = line.split(",")  # розділили ім’я та зарплату
                 total += float(salary)
                 persons += 1
             except ValueError:
