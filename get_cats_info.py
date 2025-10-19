@@ -36,8 +36,8 @@ def get_cats_info(path):
 cats_info = get_cats_info("cats_info.txt")
 
 cats_info = get_cats_info("cats_info.txt")
-for cat in cats_info: # виводимо кожний словник з нового рядка
-    print(cat)
+for cats in cats_info: # виводимо кожний словник з нового рядка
+    print(cats)
 
         
 
