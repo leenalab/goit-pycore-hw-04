@@ -9,6 +9,11 @@
 # change_contact(), show_phone(), show_all(), close()
 
 # програма повинна ідентифікувати та повідомляти про неправильно введені команди.
+def parse_input(user_input):
+    cmd, *args = user_input.split()
+    cmd = cmd.strip().lower()
+    return cmd, *args
+
 
 def main():
     print("Welcome to the assistant bot!")
