@@ -57,7 +57,7 @@ def main():
             details = input("Enter name and phone separated by space: ").strip()
 
             # розбиваємо рівно на 2 частини (ім'я, телефон)
-            parts = details.split(maxsplit=2)  # достатньо maxsplit=1; 2 — щоб ігнорити зайве
+            parts = details.split(maxsplit=2)  
             if len(parts) < 2:
                 print("Invalid contact details format.")
                 continue
@@ -68,9 +68,29 @@ def main():
                 continue
 
             contacts[name] = phone
-            
+
             print("Contact added.")
 
+        elif command == "change":
+              # 1) Якщо аргументи передані одразу в команді — беремо їх
+            if len(args) == 2:
+                name, new_phone = args
+            else:
+                # 2) Інакше просимо ввести дані другим input
+                print("Please, enter contact to change: name, new_phone")
+                details = input("Enter name and new phone separated by space: ").strip()
+                parts = details.split(maxsplit=2)
+                if len(parts) < 2:
+                    print("Invalid format. Use: change username phone")
+                    continue
+                name, new_phone = parts[0], parts[1]
+
+                # 3) Міняємо номер або повідомляємо, що контакту немає
+                if name in contacts:
+                    contacts[name] = new_phone
+                    print(f"Phone number for {name} changed to {new_phone}.")
+                else:
+                    print(f"Contact '{name}' not found.")
 
         elif command == "":
             # порожній ввід – просто питаємо ще раз, без "Invalid command."
