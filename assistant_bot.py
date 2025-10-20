@@ -28,6 +28,8 @@ def main():
             continue
         else:
             print("Invalid command.")
+if __name__ == "__main__":
+    main()
 
 
 
