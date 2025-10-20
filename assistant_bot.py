@@ -11,12 +11,17 @@
 # програма повинна ідентифікувати та повідомляти про неправильно введені команди.
 
 def parse_input(user_input: str): # робимо парсер (розбір) вводу
-    
+
     parts = user_input.strip().split()
     if not parts:                 # якщо рядок порожній
         return "", []             # повертаємо "порожню" команду
     cmd, *args = parts
     return cmd.lower(), args
+
+def add_contact(args, contacts):
+    name, phone = args
+    contacts[name] = phone
+    return "Contact added."
 
 
 def main():
