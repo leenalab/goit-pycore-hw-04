@@ -18,9 +18,12 @@ def parse_input(user_input: str): # робимо парсер (розбір) в�
     cmd, *args = parts
     return cmd.lower(), args
 
-def add_contact(args, contacts):
+def add_contact(args, contacts: dict) -> str: # додаємо словник контактів
+    # очікуємо рівно 2 аргументи: ім'я і телефон
+    if len(args) != 2:
+        return "Invalid command."
     name, phone = args
-    contacts[name] = phone
+    contacts[name] = phone     # додаємо/перезаписуємо контакт
     return "Contact added."
 
 
