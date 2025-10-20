@@ -36,9 +36,16 @@ def show_structure(): #функція - отримує шлях, перевір�
     print(Style.BRIGHT + Fore.MAGENTA + f"\nСтруктура директорії: {folder_path}\n")
 
     def walk_dir(path: Path, indent: int = 0): # оголошуємо внутрішню функцію -рекурсію
+                             # intent - змінна для відступів
         for item in path.iterdir():
-            if item.is_dir():
+            if item.is_dir():  
                 print(" " * indent + Fore.CYAN + f"[DIR] {item.name}")
-                walk_dir(item, indent + 1)  # рекурсивний виклик для піддиректорій
+                     # Перевірка, чи є об'єкт директорією 
+
+                walk_dir(item, indent + 1)  
             else:
                 print(" " * indent + Fore.GREEN + f"{item.name}")
+    walk_dir(folder_path)
+
+if __name__ == "__main__":
+    show_structure()
