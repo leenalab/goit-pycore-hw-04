@@ -9,10 +9,14 @@
 # change_contact(), show_phone(), show_all(), close()
 
 # програма повинна ідентифікувати та повідомляти про неправильно введені команди.
-def parse_input(user_input):
-    cmd, *args = user_input.split()
-    cmd = cmd.strip().lower()
-    return cmd, *args
+
+def parse_input(user_input: str): # робимо парсер (розбір) вводу
+    
+    parts = user_input.strip().split()
+    if not parts:                 # якщо рядок порожній
+        return "", []             # повертаємо "порожню" команду
+    cmd, *args = parts
+    return cmd.lower(), args
 
 
 def main():
