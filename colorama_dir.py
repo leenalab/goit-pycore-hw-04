@@ -28,21 +28,22 @@ def show_structure(): #функція - отримує шлях, перевір�
     folder_path = Path(sys.argv[1]).resolve()
 
     if not folder_path.exists():
-        print(Fore.RED + "Помилка: вказаний шлях не існує!")
+        print(Fore.RED + "Помилка: вказаний шлях не існує → {folder_path}")
         return
     if not folder_path.is_dir():
-        print(Fore.RED + "Помилка: це не директорія!")
+        print(Fore.RED + "Помилка: це не директорія → {folder_path}")
         return
     print(Style.BRIGHT + Fore.MAGENTA + f"\nСтруктура директорії: {folder_path}\n")
 
     def walk_dir(path: Path, indent: int = 0): # оголошуємо внутрішню функцію -рекурсію
-                             # intent - змінна для відступів
+                             # intent - змінна для відступів           
+        
         for item in path.iterdir():
             if item.is_dir():  
                 print(" " * indent + Fore.CYAN + f"[DIR] {item.name}")
-                     # Перевірка, чи є об'єкт директорією 
+                 # Перевірка, чи є об'єкт директорією 
 
-                walk_dir(item, indent + 1)  
+                walk_dir(item, indent + 4)  
             else:
                 print(" " * indent + Fore.GREEN + f"{item.name}")
     walk_dir(folder_path)
