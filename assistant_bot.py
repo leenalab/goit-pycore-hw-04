@@ -13,20 +13,21 @@
 def main():
     print("Welcome to the assistant bot!")
     while True:
-        command = input("Enter a command: ").strip().lower()
+        raw = input("Enter a command: ")
+        command = raw.strip().lower()
 
         if command in ["close", "exit"]:
             print("Good bye!")
             break
 
-        elif command in ["hello", "hi", "hey", "Привіт"]:
+        elif command in ["hello", "hi", "hey"]:
             print("How can I help you?")
+
+        elif command == "":
+            # порожній ввід – просто питаємо ще раз, без "Invalid command."
+            continue
         else:
             print("Invalid command.")
-
-if __name__ == "__main__":
-    main()
-
 
 
 
