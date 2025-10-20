@@ -112,6 +112,15 @@ def main():
                 print(f"{name}'s phone number is {contacts[name]}")
             else:
                 print(f"Contact '{name}' not found.")
+        
+        elif command == "all": # показати всі контакти
+               # Якщо записник порожній
+            if not contacts:
+                print("Your contact list is empty.")
+            else:
+                print("Contact list:")
+                for name, phone in contacts.items():
+                    print(f"• {name}: {phone}")
 
 
 
