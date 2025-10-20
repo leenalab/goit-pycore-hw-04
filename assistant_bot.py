@@ -91,6 +91,30 @@ def main():
                     print(f"Phone number for {name} changed to {new_phone}.")
                 else:
                     print(f"Contact '{name}' not found.")
+        
+        elif command == "phone": # показати номер телефону
+            # 1) Якщо ім’я передане одразу
+            if len(args) == 1:
+                name = args[0]
+            else:
+                # 2) Якщо користувач не вказав ім’я — питаємо окремо
+                name = input("Enter the contact name: ").strip()
+
+            while name not in contacts: # робимо цикл, поки контакт не знайдемо
+                print(f"Contact '{name}' not found.")
+                name = input("Please enter an existing contact name: ").strip()
+                if name == "":
+                    print("Empty input — returning to main menu.")
+                    break
+
+            # 3) Перевіряємо, чи контакт існує
+            if name in contacts:
+                print(f"{name}'s phone number is {contacts[name]}")
+            else:
+                print(f"Contact '{name}' not found.")
+
+
+
 
         elif command == "":
             # порожній ввід – просто питаємо ще раз, без "Invalid command."
