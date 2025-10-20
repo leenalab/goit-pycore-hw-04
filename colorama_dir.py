@@ -50,3 +50,16 @@ def show_structure(): #функція - отримує шлях, перевір�
 
 if __name__ == "__main__":
     show_structure()
+
+# приклад запуску функції 
+# python colorama_dir.py "D:\09 Neovercity\Documents"
+"""
+Agreement-Olena Titiyevska.pdf
+[DIR] Biography
+    Біографія для Woolf eng.docx
+    Біографія для Woolf укр.docx
+[DIR] Motivation brief
+    Motivation brief eng.docx
+    Motivation brief ukr.docx
+лист про зарахування.pdf
+"""
