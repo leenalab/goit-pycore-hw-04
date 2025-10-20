@@ -41,7 +41,7 @@ def main():
     contacts = {}  # словник для збереження контактів
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input("Enter a command: ")
+        user_input = input("Enter a command: hello, add, change, phone, all, close\n").strip()
         command, args = parse_input(user_input)
 
         if command in ["close", "exit"]: # вихід з програми
@@ -54,7 +54,7 @@ def main():
         elif command == "add": # додати контакт
             # просимо одразу ввести дані контакту
             print("Please, give us your user contact details: name, phone")
-            details = input("Enter name and phone separated by space: ").strip()
+            details = input("Enter name and phone separated by koma and space: ").strip()
 
             # розбиваємо рівно на 2 частини (ім'я, телефон)
             parts = details.split(maxsplit=2)  
@@ -78,7 +78,7 @@ def main():
             else:
                 # 2) Інакше просимо ввести дані другим input
                 print("Please, enter contact to change: name, new_phone")
-                details = input("Enter name and new phone separated by space: ").strip()
+                details = input("Enter name and new phone separated by koma and space: ").strip()
                 parts = details.split(maxsplit=2)
                 if len(parts) < 2:
                     print("Invalid format. Use: change username phone")
