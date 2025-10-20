@@ -26,19 +26,51 @@ def add_contact(args, contacts: dict) -> str: # додаємо словник к
     contacts[name] = phone     # додаємо/перезаписуємо контакт
     return "Contact added."
 
+def change_contact(args, contacts: dict) -> str: # додаємо зміни до контактів
+    # очікуємо рівно 2 аргументи: нове ім'я або новий телефон
+    if len(args) != 2:
+        return "Invalid command."
+    name, phone = args
+    if name not in contacts:   # якщо немає такого імені
+        return "Contact not found."
+    contacts[name] = phone     # оновлюємо номер
+    return "Contact updated."
+
 
 def main():
+    contacts = {}  # словник для збереження контактів
     print("Welcome to the assistant bot!")
     while True:
-        raw = input("Enter a command: ")
-        command = raw.strip().lower()
+        user_input = input("Enter a command: ")
+        command, args = parse_input(user_input)
 
-        if command in ["close", "exit"]:
+        if command in ["close", "exit"]: # вихід з програми
             print("Good bye!")
             break
 
-        elif command in ["hello", "hi", "hey"]:
+        elif command in ["hello", "hi", "hey"]: # привітання
             print("How can I help you?")
+
+        elif command == "add": # додати контакт
+            # просимо одразу ввести дані контакту
+            print("Please, give us your user contact details: name, phone")
+            details = input("Enter name and phone separated by space: ").strip()
+
+            # розбиваємо рівно на 2 частини (ім'я, телефон)
+            parts = details.split(maxsplit=2)  # достатньо maxsplit=1; 2 — щоб ігнорити зайве
+            if len(parts) < 2:
+                print("Invalid contact details format.")
+                continue
+
+            name, phone = parts[0], parts[1]
+            if not name or not phone:
+                print("Invalid contact details format.")
+                continue
+
+            contacts[name] = phone
+            
+            print("Contact added.")
+
 
         elif command == "":
             # порожній ввід – просто питаємо ще раз, без "Invalid command."
