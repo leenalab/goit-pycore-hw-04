@@ -22,10 +22,10 @@ init(autoreset=True)
 def show_structure(): #функція - отримує шлях, перевіряє його, виводить структуру
     if len(sys.argv) < 2: # перевірка, чи передав користувач шлях   
                           # до діректорії
-        print("Будь ласка, вкажіть шлях до директорії.")
+        print(Fore.YELLOW + "Будь ласка, вкажіть шлях до директорії.")
         return
 
-    folder_path = Path(sys.argv[1])
+    folder_path = Path(sys.argv[1]).resolve()
 
     if not folder_path.exists():
         print(Fore.RED + "Помилка: вказаний шлях не існує!")
